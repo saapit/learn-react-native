@@ -50,7 +50,7 @@ class MaterialFlexBlox extends Component {
             }}
           />
           <View>
-            <Text style={{fonrSize: 20, fontWeight: 'bold'}}>Sapit</Text>
+            <Text style={{fontSize: 20, fontWeight: 'bold'}}>Sapit</Text>
             <Text>10 Subscriber</Text>
           </View>
         </View>
