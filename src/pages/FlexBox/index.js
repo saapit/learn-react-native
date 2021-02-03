@@ -3,7 +3,20 @@ import {Image, Text, View} from 'react-native';
 import syther from '../../assets/images/syther.png';
 
 class FlexBlox extends Component {
+  constructor(props) {
+    super(props);
+    console.log('==> constructor');
+  }
+
+  componentDidMount() {
+    console.log('==> component did mount');
+  }
+
+  componentDidUpdate() {
+    console.log('==> component did update');
+  }
   render() {
+    console.log('==> render');
     return (
       <View>
         <View>

@@ -1,19 +1,21 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
-import SampleComponet from './pages/SampleComponent';
-import StylingComponent from './pages/StylingComponent';
-import FlexBox from './pages/FlexBox';
-import Position from './pages/Position';
+// import SampleComponet from './pages/SampleComponent';
+// import StylingComponent from './pages/StylingComponent';
+// import FlexBox from './pages/FlexBox';
+// import Position from './pages/Position';
+import PropsDynamic from './pages/PropsDynamic';
 
 // arrow function
 const App = () => {
   return (
     <View>
       <ScrollView>
-        <SampleComponet />
+        {/* <SampleComponet />
         <StylingComponent />
-        <FlexBox />
-        <Position />
+        <Position /> */}
+        {/* <FlexBox /> */}
+        <PropsDynamic />
       </ScrollView>
     </View>
   );
