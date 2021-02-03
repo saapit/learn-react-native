@@ -1,8 +1,8 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-import cart from './cart.png';
+import cart from '../../assets/icons/cart.png';
 
-const PositionReactNative = () => {
+const Position = () => {
   return (
     <View style={styles.wrapper}>
       <View style={{alignItems: 'center', marginBottom: 15}}>
@@ -17,7 +17,7 @@ const PositionReactNative = () => {
   );
 };
 
-export default PositionReactNative;
+export default Position;
 
 const styles = StyleSheet.create({
   textpadding: {borderWidth: 1, paddingHorizontal: 15},

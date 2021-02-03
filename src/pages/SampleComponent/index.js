@@ -1,6 +1,21 @@
 import React, {Component} from 'react';
 import {Text, Image, TextInput, View} from 'react-native';
 
+const SampleComponet = () => {
+  return (
+    <View>
+      <View style={{width: 80, height: 80, backgroundColor: '#30336b'}} />
+      <Text>Sapit</Text>
+      <Pidut />
+      <Text>Ikram</Text>
+      <Gambar />
+      <TextInput style={{borderWidth: 1}} />
+      <BoxGreen />
+      <Profile />
+    </View>
+  );
+};
+
 const Pidut = () => {
   return <Text>Pidut Liverpool</Text>;
 };
@@ -33,20 +48,5 @@ class Profile extends Component {
     );
   }
 }
-
-const SampleComponet = () => {
-  return (
-    <View>
-      <View style={{width: 80, height: 80, backgroundColor: '#30336b'}} />
-      <Text>Sapit</Text>
-      <Pidut />
-      <Text>Ikram</Text>
-      <Gambar />
-      <TextInput style={{borderWidth: 1}} />
-      <BoxGreen />
-      <Profile />
-    </View>
-  );
-};
 
 export default SampleComponet;

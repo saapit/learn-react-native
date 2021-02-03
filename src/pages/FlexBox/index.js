@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Image, Text, View} from 'react-native';
-import syther from './syther.png';
+import syther from '../../assets/images/syther.png';
 
-class MaterialFlexBlox extends Component {
+class FlexBlox extends Component {
   render() {
     return (
       <View>
@@ -59,4 +59,4 @@ class MaterialFlexBlox extends Component {
   }
 }
 
-export default MaterialFlexBlox;
+export default FlexBlox;
