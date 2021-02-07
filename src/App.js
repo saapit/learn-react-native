@@ -5,6 +5,7 @@ import {ScrollView, View} from 'react-native';
 // import FlexBox from './pages/FlexBox';
 // import Position from './pages/Position';
 import PropsDynamic from './pages/PropsDynamic';
+import StateDynamic from './pages/StateDynamic';
 
 // arrow function
 const App = () => {
@@ -15,7 +16,8 @@ const App = () => {
         <StylingComponent />
         <Position /> */}
         {/* <FlexBox /> */}
-        <PropsDynamic />
+        {/* <PropsDynamic /> */}
+        <StateDynamic />
       </ScrollView>
     </View>
   );
