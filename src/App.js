@@ -7,6 +7,7 @@ import StylingComponent from './pages/StylingComponent';
 import Position from './pages/Position';
 import PropsDynamic from './pages/PropsDynamic';
 import StateDynamic from './pages/StateDynamic';
+import ReactNativeSvg from './pages/ReactNativeSvg';
 
 // arrow function
 const App = () => {
@@ -19,7 +20,8 @@ const App = () => {
         {/* <FlexBox /> */}
         {/* <PropsDynamic /> */}
         {/* <StateDynamic /> */}
-        <Communication />
+        {/* <Communication /> */}
+        <ReactNativeSvg />
       </ScrollView>
     </View>
   );
