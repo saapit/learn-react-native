@@ -9,6 +9,7 @@ import PropsDynamic from './pages/PropsDynamic';
 import StateDynamic from './pages/StateDynamic';
 import ReactNativeSvg from './pages/ReactNativeSvg';
 import CallAPIVanilla from './pages/CallAPIVanilla';
+import CallAPIAxios from './pages/CallAPIAxios';
 
 // arrow function
 const App = () => {
@@ -23,7 +24,8 @@ const App = () => {
         {/* <StateDynamic /> */}
         {/* <Communication /> */}
         {/* <ReactNativeSvg /> */}
-        <CallAPIVanilla />
+        {/* <CallAPIVanilla /> */}
+        <CallAPIAxios />
       </ScrollView>
     </View>
   );
