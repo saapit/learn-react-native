@@ -8,6 +8,7 @@ import Position from './pages/Position';
 import PropsDynamic from './pages/PropsDynamic';
 import StateDynamic from './pages/StateDynamic';
 import ReactNativeSvg from './pages/ReactNativeSvg';
+import CallAPIVanilla from './pages/CallAPIVanilla';
 
 // arrow function
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
         {/* <PropsDynamic /> */}
         {/* <StateDynamic /> */}
         {/* <Communication /> */}
-        <ReactNativeSvg />
+        {/* <ReactNativeSvg /> */}
+        <CallAPIVanilla />
       </ScrollView>
     </View>
   );
