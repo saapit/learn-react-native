@@ -10,6 +10,7 @@ import StateDynamic from './pages/StateDynamic';
 import ReactNativeSvg from './pages/ReactNativeSvg';
 import CallAPIVanilla from './pages/CallAPIVanilla';
 import CallAPIAxios from './pages/CallAPIAxios';
+import LocalAPI from './pages/LocalAPI';
 
 // arrow function
 const App = () => {
@@ -25,7 +26,8 @@ const App = () => {
         {/* <Communication /> */}
         {/* <ReactNativeSvg /> */}
         {/* <CallAPIVanilla /> */}
-        <CallAPIAxios />
+        {/* <CallAPIAxios /> */}
+        <LocalAPI />
       </ScrollView>
     </View>
   );
