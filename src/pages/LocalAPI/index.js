@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState} from 'react';
 import {Button, Image, StyleSheet, Text, TextInput, View} from 'react-native';
 
 const Item = () => {
@@ -19,6 +20,24 @@ const Item = () => {
 };
 
 const LocalAPI = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [age, setAge] = useState('');
+
+  const submit = () => {
+    const data = {
+      name, // === name: name;
+      email, // === name: name;
+      age, // === name: name;
+    };
+    // console.log('data before send: ', data);
+    axios.post(' http://10.0.2.2:3004/users', data).then((res) => {
+      console.log('res: ', res);
+      setName('');
+      setEmail('');
+      setAge('');
+    });
+  };
   return (
     <View>
       <View style={styles.container}>
@@ -26,10 +45,25 @@ const LocalAPI = () => {
       </View>
       <View style={styles.body}>
         <Text style={styles.tengah}>Enter User Details</Text>
-        <TextInput style={styles.input} placeholder="Full Name" />
-        <TextInput style={styles.input} placeholder="Age" />
-        <TextInput style={styles.input} placeholder="Email" />
-        <Button title="Save" />
+        <TextInput
+          style={styles.input}
+          placeholder="Full Name"
+          value={name}
+          onChangeText={(value) => setName(value)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Age"
+          value={email}
+          onChangeText={(value) => setEmail(value)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Email"
+          value={age}
+          onChangeText={(value) => setAge(value)}
+        />
+        <Button title="Save" onPress={submit} />
         <View style={styles.line} />
         <Item />
       </View>

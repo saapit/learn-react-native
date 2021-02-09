@@ -1,29 +1,22 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "name": "sapit",
+      "email": "sapit@gmail.com",
+      "age": 27
     },
     {
-      "title": "json-server test",
-      "author": "sapit",
+      "name": "sapit shahrimm",
+      "email": "27",
+      "age": "sapit@gmail.com",
       "id": 2
     },
     {
-      "title": "React Native call API",
-      "author": "sapit",
+      "name": "ikram",
+      "email": "27",
+      "age": "ikram@gmail.com",
       "id": 3
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
