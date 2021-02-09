@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, {useEffect, useState} from 'react';
 import {
+  Alert,
   Button,
   Image,
   StyleSheet,
@@ -10,7 +11,7 @@ import {
   View,
 } from 'react-native';
 
-const Item = ({name, email, age, onPress, id}) => {
+const Item = ({name, email, age, onPress, id, onDelete}) => {
   //   let rand = Math.floor(Math.random() * 10 + 1);
   //   //   console.log('rand : ', rand);
   //   uri: `https://i.pravatar.cc/150?img=${rand}`,
@@ -31,7 +32,9 @@ const Item = ({name, email, age, onPress, id}) => {
         <Text style={styles.descEmail}>{email}</Text>
         <Text style={styles.descAge}>{age}</Text>
       </View>
-      <Text style={styles.delete}>X</Text>
+      <TouchableOpacity onPress={onDelete}>
+        <Text style={styles.delete}>X</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -94,6 +97,14 @@ const LocalAPI = () => {
     setAge(item.age);
     setButton('Update');
   };
+
+  const deleteItem = (item) => {
+    console.log('item delete: ', item);
+    axios.delete(`http://10.0.2.2:3004/users/${item.id}`).then((res) => {
+      console.log('res delete: ', res);
+      getData();
+    });
+  };
   return (
     <View>
       <View style={styles.container}>
@@ -130,6 +141,12 @@ const LocalAPI = () => {
               age={user.age}
               onPress={() => selectItem(user)}
               id={user.id}
+              onDelete={() =>
+                Alert.alert('Reminder', 'Are you sure to delete this user?', [
+                  {text: 'No', onPress: () => console.log('No button')},
+                  {text: 'Yes', onPress: () => deleteItem(user)},
+                ])
+              }
             />
           );
         })}
