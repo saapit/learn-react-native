@@ -1,18 +1,35 @@
 import axios from 'axios';
-import React, {useState} from 'react';
-import {Button, Image, StyleSheet, Text, TextInput, View} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  Button,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
-const Item = () => {
+const Item = ({name, email, age, onPress, id}) => {
+  //   let rand = Math.floor(Math.random() * 10 + 1);
+  //   //   console.log('rand : ', rand);
+  //   uri: `https://i.pravatar.cc/150?img=${rand}`,
+  // if nak guna random method to generate avatar
+
   return (
     <View style={styles.itemContainer}>
-      <Image
-        source={{uri: 'https://i.pravatar.cc/150'}}
-        style={styles.avatar}
-      />
+      <TouchableOpacity onPress={onPress}>
+        <Image
+          source={{
+            uri: `https://i.pravatar.cc/150?img=${id}`,
+          }}
+          style={styles.avatar}
+        />
+      </TouchableOpacity>
       <View style={styles.desc}>
-        <Text style={styles.descName}>Full Name</Text>
-        <Text style={styles.descEmail}>Email</Text>
-        <Text style={styles.descAge}>Age</Text>
+        <Text style={styles.descName}>{name}</Text>
+        <Text style={styles.descEmail}>{email}</Text>
+        <Text style={styles.descAge}>{age}</Text>
       </View>
       <Text style={styles.delete}>X</Text>
     </View>
@@ -23,6 +40,14 @@ const LocalAPI = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [age, setAge] = useState('');
+  const [users, setUsers] = useState([]);
+  // button dynamic
+  const [button, setButton] = useState('Save');
+  const [selectedUser, setSelectedUser] = useState({});
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   const submit = () => {
     const data = {
@@ -30,13 +55,44 @@ const LocalAPI = () => {
       email, // === name: name;
       age, // === name: name;
     };
-    // console.log('data before send: ', data);
-    axios.post(' http://10.0.2.2:3004/users', data).then((res) => {
-      console.log('res: ', res);
-      setName('');
-      setEmail('');
-      setAge('');
+
+    if (button === 'Save') {
+      // console.log('data before send: ', data);
+      axios.post(' http://10.0.2.2:3004/users', data).then((res) => {
+        console.log('res: ', res);
+        setName('');
+        setEmail('');
+        setAge('');
+        getData();
+      });
+    } else if (button === 'Update') {
+      axios
+        .put(`http://10.0.2.2:3004/users/${selectedUser.id}`, data)
+        .then((res) => {
+          console.log('res update: ', res);
+          setName('');
+          setEmail('');
+          setAge('');
+          getData();
+          setButton('Save');
+        });
+    }
+  };
+
+  const getData = () => {
+    axios.get(' http://10.0.2.2:3004/users').then((res) => {
+      console.log('res get data: ', res);
+      setUsers(res.data);
     });
+  };
+
+  const selectItem = (item) => {
+    console.log('selected item: ', item);
+    setSelectedUser(item);
+    setName(item.name);
+    setEmail(item.email);
+    setAge(item.age);
+    setButton('Update');
   };
   return (
     <View>
@@ -53,19 +109,30 @@ const LocalAPI = () => {
         />
         <TextInput
           style={styles.input}
-          placeholder="Age"
+          placeholder="Email"
           value={email}
           onChangeText={(value) => setEmail(value)}
         />
         <TextInput
           style={styles.input}
-          placeholder="Email"
+          placeholder="Age"
           value={age}
           onChangeText={(value) => setAge(value)}
         />
-        <Button title="Save" onPress={submit} />
+        <Button title={button} onPress={submit} />
         <View style={styles.line} />
-        <Item />
+        {users.map((user) => {
+          return (
+            <Item
+              key={user.id}
+              name={user.name}
+              email={user.email}
+              age={user.age}
+              onPress={() => selectItem(user)}
+              id={user.id}
+            />
+          );
+        })}
       </View>
     </View>
   );
